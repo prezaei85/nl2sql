@@ -1,3 +1,5 @@
+# from: https://github.com/salesforce/WikiSQL
+
 from ingestion.common import detokenize
 from collections import defaultdict
 from copy import deepcopy

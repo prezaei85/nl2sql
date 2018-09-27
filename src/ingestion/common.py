@@ -1,3 +1,5 @@
+# from: https://github.com/salesforce/WikiSQL
+
 def count_lines(fname):
     with open(fname) as f:
         return sum(1 for line in f)
