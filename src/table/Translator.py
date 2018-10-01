@@ -54,24 +54,6 @@ class Translator(object):
         lay_pred = argmax(self.model.lay_classifier(q_ht).data)
         engine = DBEngine(self.opt.db_file)
         indices = cpu_vector(batch.indices.data)
-        # beam search: check if agg and sel could work 
-        # if self.opt.beam_search:
-
-        #     #pdb.set_trace()
-            
-
-            
-        #     for i in range(batch_size):
-        #         idx = indices[i]
-        #         agg = agg_pred[i]
-        #         sel = sel_pred[i]
-        #         cond = []
-        #         pred = ParseResult(idx, agg, sel, cond)
-                
-        #         pred.eval(js_list[idx], sql_list[idx], engine)
-
-
-
 
         # get layout op tokens
         op_batch_list = []
@@ -110,9 +92,6 @@ class Translator(object):
         else:
             emb_op = self.model.cond_embedding(cond_op)
 
-
-        #pdb.set_trace()
-
         # (2) decoding
         self.model.cond_decoder.attn.applyMaskBySeqBatch(q)
         cond_state = self.model.cond_decoder.init_decoder_state(q_all, q_enc)
@@ -144,59 +123,12 @@ class Translator(object):
             cond_span_r = argmax(self.model.cond_span_r_match(
                 cond_context, q_all, q_mask, emb_span_l).data)
             cond_span_r_list.append(cpu_vector(cond_span_r))
-
-
-
-
-
             # emb_span_r: (1, batch, hidden_size)
             emb_span_r = q_all[cond_span_r, batch_index, :]
             emb_span = self.model.span_merge(
                 torch.cat([emb_span_l, emb_span_r], 2))
             cond_context, cond_state, _ = self.model.cond_decoder(
                 emb_span, q_all, cond_state)
-
-
-
-        if self.opt.beam_search:
-
-                #pdb.set_trace()
-            
-
-                for b in range(batch_size):
-                    idx = indices[b]
-                    agg = agg_pred[b]
-                    sel = sel_pred[b]
-                    cond = []
-                    for i in range(len(op_idx_batch_list[b])):
-                        col = cond_col_list[i][b]
-                        op = op_idx_batch_list[b][i]
-                        span_l = cond_span_l_list[i][b]
-                        span_r = cond_span_r_list[i][b]
-                        cond.append((col, op, (span_l, span_r)))
-                        pred = ParseResult(idx, agg, sel, cond)
-                        pred.eval(js_list[idx], sql_list[idx], engine)
-                        cnt = 0 # a counter to stop backtracking after many times
-                        while pred.exception_raised and cnt < self.opt.beam_size:
-                            cnt += 1
-                            # choose the next best guess:
-                            
-
-                            #pdb.set_trace()
-                            
-
-                            i_max = argmax(cond_col_all[0,b,:])
-                            cond_col_all[0, b, i_max[0]] = -float("inf")
-                            i_max_new = argmax(cond_col_all[0,b,:])
-                            old_cond = cond.pop()
-                            new_cond = (i_max_new[0], old_cond[1], old_cond[2])
-                            cond.append(new_cond)
-                            pred = ParseResult(idx, agg, sel, cond)
-                            pred.eval(js_list[idx], sql_list[idx], engine)
-                            # update this for the parsing of results in the end
-                            cond_col_list[i][b] = i_max_new[0]
-
-
 
         # (3) recover output
         r_list = []
