@@ -108,7 +108,6 @@ class Trainer(object):
         agg_out, sel_out, lay_out, cond_col_out, cond_span_l_out, cond_span_r_out = self.model(
             q, q_len, batch.ent, tbl, tbl_len, batch.tbl_split, batch.tbl_mask, cond_op, cond_op_len, batch.cond_col, batch.cond_span_l, batch.cond_span_r, batch.lay)
 
-        pdb.set_trace()
         # 2. Compute loss.
         pred = {'agg': agg_out, 'sel': sel_out, 'lay': lay_out, 'cond_col': cond_col_out,
                 'cond_span_l': cond_span_l_out, 'cond_span_r': cond_span_r_out}
