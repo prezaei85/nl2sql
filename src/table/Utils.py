@@ -4,6 +4,7 @@ import torch
 import random
 import numpy as np
 from collections import defaultdict
+import pdb
 
 
 def aeq(*args):
@@ -38,11 +39,14 @@ def argmax(scores):
 
 
 def add_pad(b_list, pad_index, return_tensor=True):
-    max_len = max((len(b) for b in b_list))
+    max_len = max(1, max((len(b) for b in b_list)))
     r_list = []
     for b in b_list:
         r_list.append(b + [pad_index] * (max_len - len(b)))
     if return_tensor:
-        return torch.LongTensor(r_list).cuda()
+        if max_len == 0:
+            return torch.LongTensor([[pad_index]]).cuda()
+        else:
+            return torch.LongTensor(r_list).cuda()
     else:
         return r_list

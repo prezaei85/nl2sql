@@ -60,10 +60,12 @@ def main():
 
         # inference
         if opt.beam_search:
-            print('Using beam search for inference.')
+            print('Using execution guidance for inference.')
         r_list = []
+
         for batch in test_data:
             r_list += translator.translate(batch, js_list, sql_list)
+
         r_list.sort(key=lambda x: x.idx)
 
         assert len(r_list) == len(js_list), 'len(r_list) != len(js_list): {} != {}'.format(
