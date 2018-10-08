@@ -9876,7 +9876,7 @@
 {"phase": 2, "table_id": "2-17477916-1", "question": "How many weeks on top was the single from Savage Garden?", "sql": {"sel": 2, "conds": [[4, 0, "savage garden"]], "agg": 0}}
 {"phase": 2, "table_id": "2-17477916-1", "question": "Who was the artist that issued the single on 19 January?", "sql": {"sel": 4, "conds": [[1, 0, "19 january"]], "agg": 0}}
 {"phase": 2, "table_id": "2-17477916-1", "question": "Volume:Issue 67:3-11 had how many weeks on top?", "sql": {"sel": 2, "conds": [[0, 0, "67:3-11"]], "agg": 0}}
-{"phase": 2, "table_id": "2-17477916-1", "question": "Who was the artist of the single that spent 9 \u00b6 weeks on top?", "sql": {"sel": 4, "conds": [[2, 0, "9 \u00b6"]], "agg": 0}}
+{"phase": 2, "table_id": "2-17477916-1", "question": "Who was the artist of the single that spent 9 weeks on top?", "sql": {"sel": 4, "conds": [[2, 0, "9 \u00b6"]], "agg": 0}}
 {"phase": 2, "table_id": "2-17477916-1", "question": "What is the name of the artist that issued the single on 23 February?", "sql": {"sel": 4, "conds": [[1, 0, "23 february"]], "agg": 0}}
 {"phase": 2, "table_id": "2-16411151-2", "question": "For what tournament was Bla\u017e Kav\u010di\u010d the opponent in the final?", "sql": {"sel": 1, "conds": [[3, 0, "bla\u017e kav\u010di\u010d"]], "agg": 0}}
 {"phase": 2, "table_id": "2-16411151-2", "question": "The tournament in Belgrade had what as a score?", "sql": {"sel": 4, "conds": [[1, 0, "belgrade"]], "agg": 0}}

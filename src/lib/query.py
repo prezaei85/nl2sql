@@ -43,6 +43,16 @@ class Query:
             rep +=  ' WHERE ' + ' AND '.join(['{} {} {}'.format('col{}'.format(i), cond_ops[o], v) for i, o, v in self.conditions])
         return rep
 
+    def get_complete_query(self, col_headers):
+        rep = 'SELECT {agg} `{sel}` FROM table'.format(
+            agg=agg_ops[self.agg_index],
+            sel=col_headers[self.sel_index],
+        )
+        if self.conditions:
+            rep +=  ' WHERE ' + ' AND '.join(['`{}` {} {}'.format(col_headers[i], cond_ops[o], v) for i, o, v in self.conditions])
+        return rep
+
+
     def to_dict(self):
         return {'sel': self.sel_index, 'agg': self.agg_index, 'conds': self.conditions}
 

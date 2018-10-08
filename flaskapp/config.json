@@ -1,0 +1,12 @@
+{
+	"table_file": "data/preprocessed/test.tables.jsonl",
+    "question_file" : "data/preprocessed/test.jsonl",
+    "data_path": "data/preprocessed/",
+    "anno_path": "data/annotated/",
+    "table_id" : "2-13258745-2",
+    "question_indices" : [0, 2],
+    "dir_in" : "data/preprocessed/",
+	"dir_out" : "data/annotated/flaskapp/",
+	"split" : "test",
+	"model" : "pretrained/pretrain.pt"
+}

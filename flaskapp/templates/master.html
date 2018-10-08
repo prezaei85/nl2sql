@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Your App Name{% block title %}{% endblock %}</title>
+        <title>NLP2SQL</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,14 +16,50 @@
     </head>
     <body>
         <header>
-            <h1>Ask a question from the following table:</h1>
+            <h1>Natural Language Database Queries</h1>
         </header>
 
-        {% block content %}
+        <p><big>Below is a table of Seattle Seahawks' games in 1991. Ask a question from this table:
+        </big></p>
+
         <form method="get" action="/go">
-            <input type="text" name="query" placeholder="Placeholder text">
+            <input type="text" name="question" placeholder="Please enter a question">
             <button type="submit" name="push">Submit</button>
         </form>
+
+        <br><br>
+        <p><big>
+            Fun facts:
+            <ul>
+                <li>Model inputs: question + table column headers (no content)</li>
+                <li>This table is from the test set (it is not one that the model is trained on).</li>
+            </ul>
+        </big></p>
+
+        <table border="1" cellpadding="10" cellspacing="5">
+            <tr>
+                {% for d in header %}
+                    <th><big>{{ d }}</big></th>
+                {% endfor %}
+            </tr>
+            {% for row in data %}
+                <tr>
+                {% for d in row %}
+                    <td><big>{{ d }}</big></td>
+                {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+
+        {% block content %}
+        <p>
+            <h3>Questions you may ask:</h3>
+            <ul>
+                {% for q in questions %}
+                    <li><big>{{ q }}</big></li>
+                {% endfor %}
+            </ul>
+        </p>
         {% endblock %}
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
