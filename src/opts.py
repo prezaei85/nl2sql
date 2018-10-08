@@ -168,7 +168,7 @@ def train_opts(parser):
 
 
 def translate_opts(parser):
-    parser.add_argument('-model_path', required=True,
+    parser.add_argument('-model_path', required = True,
                         help='Path to model .pt file')
     parser.add_argument('-anno_data_path', default='../data/annotated/',
                         help='Path to annotated data')
