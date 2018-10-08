@@ -60,22 +60,19 @@ def main():
 
         # inference
         if opt.beam_search:
-            print('Using beam search for inference.')
+            print('Using execution guidance for inference.')
         r_list = []
+
         for batch in test_data:
             r_list += translator.translate(batch, js_list, sql_list)
-        r_list.sort(key=lambda x: x.idx)
 
-        #pdb.set_trace()
+        r_list.sort(key=lambda x: x.idx)
 
         assert len(r_list) == len(js_list), 'len(r_list) != len(js_list): {} != {}'.format(
             len(r_list), len(js_list))
 
         # evaluation
         for pred, gold, sql_gold in zip(r_list, js_list, sql_list):
-
-            #pdb.set_trace()
-
             pred.eval(gold, sql_gold, engine)
         print('Results:')
         for metric_name in ('all', 'exe'):
