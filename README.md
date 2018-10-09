@@ -1,6 +1,15 @@
 # Natural Language Database Queries
-This repository provides inference files for running the [Coarse2Fine](https://github.com/donglixp/coarse2fine) model on new questions over tables from [WikiSQL](https://github.com/salesforce/WikiSQL). It also includes a simplified version of [execution guidance](https://arxiv.org/abs/1807.03100) when decoding the SQL code. 
+This repository provides inference files for running the [Coarse2Fine](https://github.com/donglixp/coarse2fine) model on new questions over tables from [WikiSQL](https://github.com/salesforce/WikiSQL). 
 
+It also implements a simplified version of [execution guidance](https://arxiv.org/abs/1807.03100) when decoding the SQL code. 
+
+You need:
+- [Stanford CreNLP](https://github.com/stanfordnlp/python-stanford-corenlp) for data annotation 
+- [Spacy](https://spacy.io/usage/linguistic-features#pos-tagging) for part-of-speech tagging of the question
+- [PyTorch 0.2.0.post3](http://download.pytorch.org/whl/cu80/torch-0.2.0.post3-cp36-cp36m-manylinux1_x86_64.whl) from [previous versions](https://pytorch.org/get-started/previous-versions/)
+
+
+## Setup
 
 
 
