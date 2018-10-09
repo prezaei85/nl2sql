@@ -11,7 +11,7 @@ from evaluate_question import main
 @app.route('/')
 @app.route('/index')
 def index():
-    with open('flaskapp/config.json', 'r') as f:
+    with open('config/config.json', 'r') as f:
         con = json.load(f)
 
     questions, header, data = get_table_data(
@@ -29,7 +29,7 @@ def go():
         flash('Please enter a question.')
         return redirect(url_for('index'))
 
-    with open('flaskapp/config.json', 'r') as f:
+    with open('config/config.json', 'r') as f:
         con = json.load(f)
 
     questions, header, data = get_table_data(

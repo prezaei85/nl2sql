@@ -38,7 +38,7 @@ class Translator(object):
             model_opt, self.fields, checkpoint)
         self.model.eval()
 
-    def translate(self, batch, js_list, sql_list):
+    def translate(self, batch, js_list = [], sql_list = []):
         q, q_len = batch.src
         tbl, tbl_len = batch.tbl
         ent, tbl_split, tbl_mask = batch.ent, batch.tbl_split, batch.tbl_mask
