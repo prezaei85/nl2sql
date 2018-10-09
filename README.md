@@ -1,3 +1,10 @@
+# Natural Language Database Queries
+This repository provides inference files for running the [Coarse2Fine](https://github.com/donglixp/coarse2fine) model 
+
+
+
+
+
 # Insight_Project_Framework
 Framework for machine learning projects at Insight Data Science. 
 
