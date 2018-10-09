@@ -23,7 +23,8 @@ You can modify and run the following python script for infering the model with n
 ```
 python run_model.py
 ```
-## Use beam search for evaluating the model over test set
+## Use execution guidance for evaluating the model over test set
+Evaluate the model over all questions from tables of the test set in WikiSQL:
 ```
 cd src/
 python evaluate.py -model_path ../pretrained/pretrain.pt -beam_search
