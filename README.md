@@ -1,5 +1,7 @@
 # Natural Language Database Queries
-This repository provides inference files for running the [Coarse2Fine](https://github.com/donglixp/coarse2fine) model 
+This repository provides inference files for running the [Coarse2Fine](https://github.com/donglixp/coarse2fine) model on new questions over tables from [WikiSQL](https://github.com/salesforce/WikiSQL). It also includes a simplified version of [execution guidance](https://arxiv.org/abs/1807.03100) when decoding the SQL code. 
+
+
 
 
 
