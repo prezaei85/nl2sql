@@ -1,18 +1,20 @@
 import sys
 import json
+import argparse
 sys.path.append("./src")
 from annotate_question import annotate_question
 from evaluate_question import main
 
-question = "How many times did the Seattle Seahawks played at Kingdome?"
-table_id = "2-13258745-2" 
-dataset = "test"
+parser = argparse.ArgumentParser()
+parser.add_argument('-config_path', required = True, 
+	help='Path to the config file.')
+args = parser.parse_args()
 
-with open('config/config.json', 'r') as f:
+with open(args.config_path, 'r') as f:
     con = json.load(f)
 
 anno_filename, headers = annotate_question(
-	question, table_id, con["dir_in"], con["dir_out"], dataset)
+	con["question"], con["table_id"], con["dir_in"], con["dir_out"], "test")
 
 args = ['-model_path', con["model"], '-data_path', con["data_path"], \
         "-anno_data_path", con["anno_path"]]
