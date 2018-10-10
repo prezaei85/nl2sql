@@ -27,6 +27,12 @@ You can modify the ```config/model_config.json``` file and run the following pyt
 ```
 python run_model.py -config_path "config/model_config.json"
 ```
+With the current model_config.json the output will be:
+```
+SQL code: SELECT  `Result` FROM table WHERE `Opponent` = New York Jets
+Execution result: w 20-13
+```
+
 ## Use execution guidance for evaluating the model over test set
 Evaluate the model over all questions from tables of the test set in WikiSQL:
 ```
