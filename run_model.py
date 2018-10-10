@@ -6,15 +6,17 @@ from annotate_question import annotate_question
 from evaluate_question import main
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-config_path', required = True, 
+parser.add_argument('-config_path', default = "config/model_config.json", 
 	help='Path to the config file.')
+parser.add_argument('-question', required = True, 
+	help='Natural language question for the database.')
 args = parser.parse_args()
 
 with open(args.config_path, 'r') as f:
     con = json.load(f)
 
 anno_filename, headers = annotate_question(
-	con["question"], con["table_id"], con["dir_in"], con["dir_out"], "test")
+	args.question, con["table_id"], con["dir_in"], con["dir_out"], "test")
 
 args = ['-model_path', con["model"], '-data_path', con["data_path"], \
         "-anno_data_path", con["anno_path"]]
