@@ -31,11 +31,13 @@ python train.py
 ```
 
 ## Infer model 
-You can modify the ```config/model_config.json``` file and run the following python script for infering the model with new input questions:
+You can modify the ```config/model_config.json``` file and run run_model.py for infering the model with new input questions:
+
+**Example**:
 ```
 python run_model.py -config_path "config/model_config.json" -question "what was the result of the game with New York Jets?"
 ```
-**Example**: with the current model_config.json and the above question in the command line the output will be:
+Result:
 ```
 SQL code: SELECT  `Result` FROM table WHERE `Opponent` = New York Jets
 Execution result: w 20-13
