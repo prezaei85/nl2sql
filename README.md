@@ -22,12 +22,20 @@ pip install -r requirements.txt
 ## Download pretrained model
 Download pretrained model from [here](https://drive.google.com/file/d/18oMNo4yC01gwMjHcfmE-_G5qE7X5SLYt/view?usp=sharing) and unzip it in the folder ```pretrained``` in the root folder. 
 
+## Train model
+Use these for training (preprocess.py will save the data files in pt format):
+```
+cd src/
+python preprocess.py
+python train.py
+```
+
 ## Infer model 
 You can modify the ```config/model_config.json``` file and run the following python script for infering the model with new input questions:
 ```
-python run_model.py -config_path "config/model_config.json"
+python run_model.py -config_path "config/model_config.json" -question "what was the result of the game with New York Jets?"
 ```
-With the current model_config.json the output will be:
+**Example**: with the current model_config.json and the above question in the command line the output will be:
 ```
 SQL code: SELECT  `Result` FROM table WHERE `Opponent` = New York Jets
 Execution result: w 20-13
