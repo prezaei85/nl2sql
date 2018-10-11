@@ -27,14 +27,18 @@
             <button type="submit" name="push">Submit</button>
         </form>
 
-        <br><br>
-        <p><big>
-            Fun facts:
+        <br><br><br>
+        {% block content %}
+        <p>
+            <h3>Questions you may ask:</h3>
             <ul>
-                <li>Model inputs: question + table column headers (no content)</li>
-                <li>This table is from the test set (it is not one that the model is trained on).</li>
+                {% for q in questions %}
+                    <li><big>{{ q }}</big></li>
+                {% endfor %}
             </ul>
-        </big></p>
+        </p>
+        {% endblock %}
+        <br>
 
         <table border="1" cellpadding="10" cellspacing="5">
             <tr>
@@ -51,16 +55,13 @@
             {% endfor %}
         </table>
 
-        {% block content %}
-        <p>
-            <h3>Questions you may ask:</h3>
+        <p><big>
+            Fun facts:
             <ul>
-                {% for q in questions %}
-                    <li><big>{{ q }}</big></li>
-                {% endfor %}
+                <li>Model inputs: question + table column headers (no content)</li>
+                <li>This table is from the test set (it is not one that the model is trained on).</li>
             </ul>
-        </p>
-        {% endblock %}
+        </big></p>
 
         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.12.0.min.js"><\/script>')</script>
