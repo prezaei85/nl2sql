@@ -14,13 +14,20 @@
         <link rel="stylesheet" href="/static/css/main.css">
         <script src="/static/js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
+
     <body>
         <header>
             <h1>Natural Language Database Queries</h1>
         </header>
 
-        <p><big>Below is a table of Seattle Seahawks' games in 1991. Ask a question from this table:
-        </big></p>
+        <p>
+            <big>Below is a table of 
+                <span style="background-color: #69BE28">
+                    <font color="#002244"><b>Seattle Seahawks</b></font>
+                </span>
+                games in 1991. Ask a question from this table: 
+            </big>
+        </p>
 
         <form method="get" action="/go">
             <input type="text" name="question" placeholder="Please enter a question">
