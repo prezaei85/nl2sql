@@ -107,7 +107,7 @@ class Translator(object):
             cond_col = argmax(cond_col_all)
             # add to this after beam search: cond_col_list.append(cpu_vector(cond_col))
             # emb_col
-            batch_index = torch.LongTensor(range(batch_size)).unsqueeze_(0).cuda().expand(
+            batch_index = torch.LongTensor(range(batch_size)).unsqueeze_(0).expand(
                 cond_col.size(0), cond_col.size(1))
             emb_col = tbl_enc[cond_col, batch_index, :]
             cond_context, cond_state, _ = self.model.cond_decoder(

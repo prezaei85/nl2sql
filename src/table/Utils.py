@@ -45,8 +45,8 @@ def add_pad(b_list, pad_index, return_tensor=True):
         r_list.append(b + [pad_index] * (max_len - len(b)))
     if return_tensor:
         if max_len == 0:
-            return torch.LongTensor([[pad_index]]).cuda()
+            return torch.LongTensor([[pad_index]])
         else:
-            return torch.LongTensor(r_list).cuda()
+            return torch.LongTensor(r_list)
     else:
         return r_list

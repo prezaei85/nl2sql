@@ -180,7 +180,7 @@ def translate_opts(parser):
                         help="""Path to output the predictions (each line will be the decoded sequence""")
     parser.add_argument('-batch_size', type=int, default=30,
                         help='Batch size')
-    parser.add_argument('-gpu', type=int, default=0,
+    parser.add_argument('-gpu', type=int, default=-1,
                         help="Device to run on")
     parser.add_argument('-gold_layout', action='store_true',
                         help="Given the golden layout sequences for evaluation.")

@@ -75,12 +75,12 @@ def encode_unsorted_batch(encoder, tbl, tbl_len):
     # sort for pack()
     idx_sorted, tbl_len_sorted, idx_map_back = sort_for_pack(tbl_len)
     tbl_sorted = tbl.index_select(1, Variable(
-        torch.LongTensor(idx_sorted).cuda(), requires_grad=False))
+        torch.LongTensor(idx_sorted), requires_grad=False))
     # tbl_context: (seq_len, batch, hidden_size * num_directions)
     __, tbl_context = encoder(tbl_sorted, tbl_len_sorted)
     # recover the sort for pack()
     v_idx_map_back = Variable(torch.LongTensor(
-        idx_map_back).cuda(), requires_grad=False)
+        idx_map_back), requires_grad=False)
     tbl_context = tbl_context.index_select(1, v_idx_map_back)
     return tbl_context
 
@@ -113,7 +113,7 @@ class TableRNNEncoder(nn.Module):
             enc_left, enc_right = enc_split[:-1], enc_split[1:]
         elif self.split_type == 'incell':
             batch_index = torch.LongTensor(range(tbl_split.data.size(1))).unsqueeze_(
-                0).cuda().expand(tbl_split.data.size(0) - 1, tbl_split.data.size(1))
+                0).expand(tbl_split.data.size(0) - 1, tbl_split.data.size(1))
             split_left = (tbl_split.data[:-1] +
                           1).clamp(0, tbl_context.size(0) - 1)
             enc_left = tbl_context[split_left, batch_index, :]

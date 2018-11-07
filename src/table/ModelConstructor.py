@@ -136,6 +136,6 @@ def make_base_model(model_opt, fields, checkpoint=None):
         print('Loading model')
         model.load_state_dict(checkpoint['model'])
 
-    model.cuda()
+    #model.cuda()
 
     return model
